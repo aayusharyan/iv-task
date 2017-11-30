@@ -24,6 +24,10 @@ $("#search_btn").bind("click", function() {
                     img_src = single_data.show.image.medium;
                 }
 
+                if(single_data.show.summary == "" || single_data.show.summary == null) {
+                    single_data.show.summary = "<p></p>";
+                }
+
                 var new_card = "<div class=\"col-3 mb-4\">\n" +
                     "        <div class=\"card\">\n" +
                     "            <img class=\"img-fluid\" src=\""+ img_src +"\">\n" +
