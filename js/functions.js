@@ -28,7 +28,7 @@ $("#search_btn").bind("click", function() {
                     single_data.show.summary = "<p></p>";
                 }
 
-                var new_card = "<div class=\"col-3 mb-4\">\n" +
+                var new_card = "<div class=\"col-12 col-lg-3 mb-4\">\n" +
                     "        <div class=\"card\">\n" +
                     "            <img class=\"img-fluid\" src=\""+ img_src +"\">\n" +
                     "            <div class=\"card-body\">\n" +
@@ -88,10 +88,10 @@ function update_single_show_data(single_data) {
     $("#search_results").html("");
     var new_card = "<div class=\"card m-4 p-0\">\n" +
         "                    <div class=\"card-body row p-0\">\n" +
-        "                        <div class=\"col-2\">\n" +
+        "                        <div class=\"col-12 col-lg-2\">\n" +
         "                            <img class=\"img-fluid\" src=\""+ img_src +"\">\n" +
         "                        </div>\n" +
-        "                        <div class=\"col-10 p-3\">\n" +
+        "                        <div class=\"col-12 col-lg-10 p-3\">\n" +
         "                            <h4 class=\"card-title\" style=\"white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\">"+ single_data.name +"</h4>\n" +
         "                            <div class=''>"+ single_data.summary +"</div>\n" +
         "                        </div>\n" +
@@ -131,7 +131,7 @@ function update_show_episodes(tvid) {
                     single_data.summary = "<p></p>";
                 }
 
-                var new_card = "<div class=\"col-3 mb-4\">\n" +
+                var new_card = "<div class=\"col-12 col-lg-3 mb-lg-4\">\n" +
                     "        <div class=\"card\">\n" +
                     "            <img class=\"img-fluid\" src=\""+ img_src +"\">\n" +
                     "            <div class=\"card-body\">\n" +
@@ -167,7 +167,7 @@ function update_show_cast(tvid) {
                     img_src = single_data.character.image.medium;
                 }
 
-                var new_card = "<div class=\"col-2 mb-4\">\n" +
+                var new_card = "<div class=\"col-12 col-lg-2 mb-lg-4\">\n" +
                     "        <div class=\"card\">\n" +
                     "            <img class=\"img-fluid\" src=\""+ img_src +"\">\n" +
                     "            <div class=\"card-body\">\n" +
