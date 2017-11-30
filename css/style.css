@@ -2,8 +2,12 @@
 .card-content p {
     text-align: justify;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
+    line-height: 2.5ex;
+    height: 10ex; /* 2.5ex for each visible line */
     overflow: hidden;
+    -webkit-box-orient: vertical;
     text-overflow: ellipsis;
+}
+.card-content p:not(:first-child) {
+    display: none;
 }

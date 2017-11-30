@@ -26,7 +26,7 @@ $("#search_btn").bind("click", function() {
 
                 var new_card = "<div class=\"col-3 mb-4\">\n" +
                     "        <div class=\"card\">\n" +
-                    "            <img class=\"img-fluid\" src=\""+ img_src +"\" alt=\"Card image cap\">\n" +
+                    "            <img class=\"img-fluid\" src=\""+ img_src +"\">\n" +
                     "            <div class=\"card-body\">\n" +
                     "                <!--Title-->\n" +
                     "                <h4 class=\"card-title\" style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>"+ single_data.show.name +"</h4>\n" +
@@ -84,7 +84,7 @@ function update_single_show_data(single_data) {
     var new_card = "<div class=\"card m-4 p-0\">\n" +
         "                    <div class=\"card-body row p-0\">\n" +
         "                        <div class=\"col-2\">\n" +
-        "                            <img class=\"img-fluid\" src=\""+ img_src +"\" alt=\"Card image cap\">\n" +
+        "                            <img class=\"img-fluid\" src=\""+ img_src +"\">\n" +
         "                        </div>\n" +
         "                        <div class=\"col-10 p-3\">\n" +
         "                            <h4 class=\"card-title\" style=\"white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\">"+ single_data.name +"</h4>\n" +
@@ -121,9 +121,13 @@ function update_show_episodes(tvid) {
                     img_src = single_data.image.medium;
                 }
 
+                if(single_data.summary == "") {
+                    single_data.summary = "<p></p>";
+                }
+
                 var new_card = "<div class=\"col-3 mb-4\">\n" +
                     "        <div class=\"card\">\n" +
-                    "            <img class=\"img-fluid\" src=\""+ img_src +"\" alt=\"Card image cap\">\n" +
+                    "            <img class=\"img-fluid\" src=\""+ img_src +"\">\n" +
                     "            <div class=\"card-body\">\n" +
                     "                <h4 class=\"card-title\" style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>"+ single_data.name +"</h4>\n" +
                     "                <div class='card-content' data-ep_id='"+ single_data.id +"' data-full_summary=\""+ $('<div/>').text(single_data.summary).html() +"\" >"+ single_data.summary +"</div>\n" +
@@ -158,10 +162,10 @@ function update_show_cast(tvid) {
 
                 var new_card = "<div class=\"col-2 mb-4\">\n" +
                     "        <div class=\"card\">\n" +
-                    "            <img class=\"img-fluid\" src=\""+ img_src +"\" alt=\"Card image cap\">\n" +
+                    "            <img class=\"img-fluid\" src=\""+ img_src +"\">\n" +
                     "            <div class=\"card-body\">\n" +
                     "                <h4 class=\"card-title\" style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>"+ single_data.person.name +"</h4>\n" +
-                    "                <div><p><em>("+ single_data.character.name +")</em></p></div>" +
+                    "                <div><p style=\"white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\"><em>("+ single_data.character.name +")</em></p></div>" +
                     "            </div>\n" +
                     "        </div>\n" +
                     "    </div>";
