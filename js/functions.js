@@ -33,7 +33,7 @@ $("#search_btn").bind("click", function() {
                     "            <img class=\"img-fluid\" src=\""+ img_src +"\">\n" +
                     "            <div class=\"card-body\">\n" +
                     "                <!--Title-->\n" +
-                    "                <h4 class=\"card-title\" style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>"+ single_data.show.name +"</h4>\n" +
+                    "                <h4 class=\"card-title\" style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' data-toggle=\"tooltip\" data-placement=\"bottom\" title=\""+ single_data.show.name +"\">"+ single_data.show.name +"</h4>\n" +
                     "                <!--Text-->\n" +
                     "                <div class='card-content'>"+ single_data.show.summary +"</div>\n" +
                     "                <a href=\"#\" class=\"btn btn-primary\" onclick='single_search_id("+ single_data.show.id +")'>View More</a>\n" +
@@ -44,6 +44,7 @@ $("#search_btn").bind("click", function() {
 
                 $('#search_results').append(new_card);
                 change_loading_state(false);
+                initTooltip();
             });
         }
     });
@@ -110,6 +111,7 @@ function update_single_show_data(single_data) {
     $('#search_results').append(new_card);
     update_show_cast(single_data.id);
     update_show_episodes(single_data.id);
+    initTooltip();
 }
 
 function update_show_episodes(tvid) {
@@ -125,7 +127,7 @@ function update_show_episodes(tvid) {
                     img_src = single_data.image.medium;
                 }
 
-                if(single_data.summary == "") {
+                if(single_data.summary == "" || single_data.summary == null) {
                     single_data.summary = "<p></p>";
                 }
 
@@ -133,7 +135,7 @@ function update_show_episodes(tvid) {
                     "        <div class=\"card\">\n" +
                     "            <img class=\"img-fluid\" src=\""+ img_src +"\">\n" +
                     "            <div class=\"card-body\">\n" +
-                    "                <h4 class=\"card-title\" style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>"+ single_data.name +"</h4>\n" +
+                    "                <h4 class=\"card-title\" style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' data-toggle=\"tooltip\" data-placement=\"bottom\" title=\""+ single_data.name +"\">"+ single_data.name +"</h4>\n" +
                     "                <div class='card-content' data-ep_id='"+ single_data.id +"' data-full_summary=\""+ $('<div/>').text(single_data.summary).html() +"\" >"+ single_data.summary +"</div>\n" +
                     "                <p><em>(Air Date: "+ single_data.airdate +")</em></p>" +
                     "            </div>\n" +
@@ -147,6 +149,7 @@ function update_show_episodes(tvid) {
                 $('#single_show_episodes').append(new_card);
             });
             change_loading_state(false);
+            initTooltip();
         }
     });
 }
@@ -168,8 +171,8 @@ function update_show_cast(tvid) {
                     "        <div class=\"card\">\n" +
                     "            <img class=\"img-fluid\" src=\""+ img_src +"\">\n" +
                     "            <div class=\"card-body\">\n" +
-                    "                <h4 class=\"card-title\" style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>"+ single_data.person.name +"</h4>\n" +
-                    "                <div><p style=\"white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\"><em>("+ single_data.character.name +")</em></p></div>" +
+                    "                <h4 class=\"card-title\" style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;' data-toggle=\"tooltip\" data-placement=\"bottom\" title=\""+ single_data.person.name +"\">"+ single_data.person.name +"</h4>\n" +
+                    "                <div><p style=\"white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\""+ single_data.character.name +"\"><em>("+ single_data.character.name +")</em></p></div>" +
                     "            </div>\n" +
                     "        </div>\n" +
                     "    </div>";
@@ -178,6 +181,7 @@ function update_show_cast(tvid) {
                 $('#single_show_cast').append(new_card);
             });
             change_loading_state(false);
+            initTooltip();
         }
     });
 }
@@ -189,4 +193,7 @@ function change_loading_state(loading_visibility_status) {
     } else {
         $("#loading_state").css('visibility', 'hidden');
     }
+}
+function initTooltip() {
+    $('[data-toggle="tooltip"]').tooltip();
 }
